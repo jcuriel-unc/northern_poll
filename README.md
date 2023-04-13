@@ -13,4 +13,17 @@ pdf and png files for the topline and crosstab results. The output of this proce
 ![Example topline result](reports_png/abortion_important_table.png)
 
 As can be seen, the topline results take the form of a simplified  table with the percent of the weighted responses, in addition to the margin of error reported next to
-it, which is then visualized on the bar plot above. The bar plots all have the confidence intervals likewise visualized. 
+it, which is then visualized on the bar plot above. The bar plots all have the confidence intervals likewise visualized. It is important to note that the script produces 
+all of these via a standardized loop. Therefore, users need simply have similarly formatted data and change the question item numeric range in order to adapt to their 
+own work. 
+
+The oh_pollR2.R script likewise produces all of the cross tab results by party and gender, which takes the following form: 
+
+![Example party cross tab results](party_png/abortion_important_table.png)
+
+
+![Example gender cross tab results](gender_png/abortion_important_table.png)
+
+As can be seen, these plots take a similar form to the topline results. However, the tables now demonstrate the dyadic combination of category with item response, in addition to the percents and margin of errors. The visualization now takes the form of confidence interval plots. These likewise are all created via loops. 
+
+Finally, should the user desire to automate their poll reports, the .Rmd files will be of great help. These read in the file names of all the pngs in their respective folders, orders them based upon creation times, and then orders them into word documents. Even if a bit rough, this should allow the user to get all of their results into one place, and then conduct basic word edits at the margins in order to complete their finalized reports. 
