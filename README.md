@@ -19,10 +19,10 @@ own work.
 
 The oh_pollR2.R script likewise produces all of the cross tab results by party and gender, which takes the following form: 
 
-![Example party cross tab results](party_png/abortion_important_table.png)
+![Example party cross tab results](party_png/abortion_important.png)
 
 
-![Example gender cross tab results](gender_png/abortion_important_table.png)
+![Example gender cross tab results](gender_png/abortion_important.png)
 
 As can be seen, these plots take a similar form to the topline results. However, the tables now demonstrate the dyadic combination of category with item response, in addition to the percents and margin of errors. The visualization now takes the form of confidence interval plots. These likewise are all created via loops. 
 
