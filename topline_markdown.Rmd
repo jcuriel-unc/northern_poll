@@ -1,0 +1,74 @@
+---
+title: "Northern Poll Topline Results"
+author: "Dr. Robert Alexander,Dr. John A. Curiel, and Dr. Tyler S. Steelman"
+date: "2022-10-18"
+output: word_document
+---
+
+## Methodology 
+
+Ohio Northern University launched the poll in collaboration with the polling firm, Lucid. The survey was conducted among likely voters in the state of Ohio (n=668) via a Qualtrics questionnaire. Individuals sampled were sent an individualized link to the survey. Quotas included were demographics by race, gender and party. Quotas for race and gender were based upon the 2020 Census results, party based upon the average vote share from the 2018 and 2020 top statewide partisan race, with a ratio of 52 percent Republicans, 45 percent Democrats, and three percent independents.^[John Johnson, “Pollster: Weighted data survey tables in R.” March 9, 2020. https://cran.r-project.org/web/packages/pollster/readme/README.html] 
+
+The survey results for the data are weighted by education, age, race, and party. We weighted race based upon the 2020 race by ethnicity 2020 Census data, and age and education via the 2020 American Community Survey (ACS) 5-year supplement. We weighted the parties by the 2020 Presidential vote share, with those who initially labeled as independent asked to express their partisan lean via the question, 
+
+“Do you think of yourself as closer to the Republican or Democratic Party?”
+
+In total, the survey provides a margin of error at approximately 3.8 percent for a 95 percent confidence interval. We additionally provide the topline results and subsetted margin of errors employing the “pollster” package in R. We plot the distribution of these weights by party in Figure 1 below. We see that the distribution of weights skewed towards higher values for Republicans than Democrats. The median weighted value for Democrats is 0.67, and for Republicans, 1.19. At the 95th percentile, the weighted value for Democrats is 1.41 compared to 2.11 for Republicans. These results suggest that Republican observations receive more influence per sampled individual, meaning that it is important to consider the potential role of Republicans sampled in the results; should we have sampled an unrepresentative distribution of Republicans, then the error in interpreting the preferences for Republicans will naturally be skewed. 
+
+In regards to geographic distribution, we additionally asked for the ZIP codes of the respondent. Of Ohio’s ZIP codes, we sampled from 322 unique ZIP codes of the state’s 1,018. The sampled ZIP codes reflect those that comprise 61.7 percent of the population. Additionally, of the ZIP codes sampled, the median sampled ZIP code saw one person sampled, the 95th percentile 5, and the maximum at 9. This suggests that insofar as we sought sampling from a non-clustered geographic sample, we largely succeeded despite the lack of a regional quota filter. 
+
+
+```{r weights, out.width = "90%", echo=FALSE, fig.align='center',fig.cap="Distribution of survey weights by party" }
+#q_order <- readRDS("question_order_vec.rds")
+
+
+
+
+knitr::include_graphics("party_violin_weight.png") # creates violin plot for weights 
+
+
+
+
+
+```
+
+
+## Topline results 
+
+The following are the top line results for the Northern Poll, a web-based poll of 668 likely voters in Ohio taken from October 11th to October 15th. Dr. Robert Alexander (Ohio Northern University) Dr. John Curiel (Ohio Northern University), and Professor Tyler Steelman (University of North Carolina - Chapel Hill) led the project. Total weighted percents and margin of errors (MOEs) reported as bar plots and tables below for the question items. 
+
+
+```{r topline, out.width = "90%", echo=FALSE, fig.align='center'}
+#q_order <- readRDS("question_order_vec.rds")
+
+
+#print(file_names_pt[5])
+
+#knitr::include_graphics(file_names_pt[5])
+#![Cpation](file_names_pt[5]){#id .class width=30 height=20px}
+details = file.info(list.files("reports_png", full.names = T)) # orders the plots by date/time it was created.
+details <- details[with(details, order(as.POSIXct(mtime))), ]
+files = rownames(details)
+files = files[1:93]
+#file_names_pt <- paste0("reports_png",sep="/" ,files) ## looks good
+
+#knitr::include_graphics(files[4]) # this now works, given that we have 
+# the full file name. Should be able to proceed with test loop 
+
+
+
+knitr::include_graphics( as.character(files)) # given the character vector of file names, produces all of the plots in order of when they were created 
+
+#knitr::include_graphics("reports_png/favorability_dewine_table.png")
+
+
+#for(i in files) {
+#  knitr::include_graphics(paste0("![](",file_names_pt[i], sep=")", "\n"))
+#   cat("\n\n\\pagebreak\n")
+#}
+
+
+
+```
+
+
